@@ -162,7 +162,7 @@ class Home extends Component {
           </div>
           </div>
         <h3>Registro de Horario Masajistas</h3>
-        <SetSchedule/>
+        <SetSchedule emailUsuario={this.state.email}/>
       </div>
       );
 //-------------------------------------------------------------------------

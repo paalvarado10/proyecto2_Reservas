@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import ScheduleHour from'./ScheduleHour';
 
+
 class ScheduleTypes extends Component{
 	constructor(props){
 		super(props);
 		this.state={
 			tipos: '',
 			pres:'',
-			seleccionados:''
+			seleccionados:'',
+			horaInicio:'',
+     		horaFin:''
 		}
 		this.selectTypes=this.selectTypes.bind(this);
 		this.selectType=this.selectType.bind(this);
+		this.setHour=this.setHour.bind(this);
+
 	}
 	componentWillMount(){
 		console.log('LLega');
@@ -40,6 +45,13 @@ class ScheduleTypes extends Component{
 			console.log('nuevo estado '+ this.state.pres);
 		});
 	}
+	setHour(ini,fin){
+    this.setState({
+      horaInicio: ini,
+      horaFin: fin
+    });
+    this.props.setHour(ini,fin);
+  }
 	selectTypes(event){
 		let seleccion = [];
 		seleccion=this.state.pres;
@@ -77,7 +89,7 @@ class ScheduleTypes extends Component{
 					<div>
 						<h2>Brindando el servicio de:</h2>
 						<ul>{ind}</ul>
-						<ScheduleHour/>
+						<ScheduleHour setHour={this.setHour}/> 
 					</div>
 					);
 			}
