@@ -149,6 +149,7 @@ class Home extends Component {
 // CITAS ACTUALES E HISTORIAL 
     return(
       <div>
+      <div className="container">
        <div className="row" style={{margin: 'auto'}}>
           <div className="col-sm-4"></div>
           <div className="col-sm-4">
@@ -161,8 +162,29 @@ class Home extends Component {
              Cerrar Sesion</button> 
           </div>
           </div>
-        <h3>Registro de Horario Masajistas</h3>
+          </div>
+          <br/>
+          <div className="row">
+          <div className="col-sm-1"></div>
+          <div className="col-sm-6">        
+          <h3>Registro de Horario Masajistas</h3>
         <SetSchedule emailUsuario={this.state.email}/>
+        </div>
+          <div className="col-sm-1"></div>
+          <div className="col-sm-4">
+          <div className="row">
+          <div className="col-sm-6">
+          <button type="button" class="btn btn-outline-dark btn-lg">Mis Citas</button>
+          </div>
+          <div className="col-sm-6">
+          <button type="button" class="btn btn-outline-dark btn-lg">Mis Horarios</button>
+          
+          </div>
+          </div>
+          </div>
+          <div className="col-sm-1"></div>
+          </div>
+
       </div>
       );
 //-------------------------------------------------------------------------

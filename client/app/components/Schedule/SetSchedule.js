@@ -102,7 +102,7 @@ class SetSchedule extends Component{
     }=this.state;
       if(dia){
         return(
-          <div>
+          <div className="col-lg-6 col-lg-offset-3">
             <h1>{"Horario para el día:" + dia}</h1>
             <ScheduleTypes setHour={this.setHour}
             selectTypes={this.selectTypes}/>     
@@ -111,7 +111,7 @@ class SetSchedule extends Component{
       }
       else{
         return(
-          <div>
+          <div className="col-lg-6 col-lg-offset-3">
             <ScheduleDay setDay={this.setDay}/>
           </div>
         );
