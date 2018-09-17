@@ -36,22 +36,40 @@ class SetSchedule extends Component{
         horaFin,
         correo
       }=this.state;
-      console.log("crear horario "+dia+" "+tipos[0]+" "
-        +horaInicio+" "+horaFin+" "+correo+" ");
+      let r = [];
+      tipos.map((t,i)=>{
+        if(i<tipos.length-2){
+          console.log(t);
+          let  item  = new Object();
+          item.name= t;
+          item.avaible = true;
+          item.id=i;
+          console.log(item)
+          r.push(item);
+        }
+      });
+      let ejemplo = new Object();
+      ejemplo.day=dia;
+      ejemplo.HoraLlegada= horaInicio;
+        ejemplo.HoraSalida= horaFin;
+        ejemplo.idMasajista= correo;
+        ejemplo.types= r;
+      console.log(ejemplo);
       fetch('/schedule/create',
         { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(ejemplo),
+        /*{
         day: dia,
-        HorraLLegada: horaInicio+"",
-        HoraSalida: horaFin+"",
+        HorraLLegada: horaInicio,
+        HoraSalida: horaFin,
         idMasajista: correo,
-        types: tipos
-      })
-    }).then(res => res.json())
+        types: r
+      }),*/
+  }).then(res => res.json())
   .then(json => {
     if(json.success) {
       this.setState({
