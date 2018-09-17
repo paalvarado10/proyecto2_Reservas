@@ -13,12 +13,15 @@ const webpackConfig = require('../webpack.config');
 const isDev = process.env.NODE_ENV !== 'production';
 const port  = process.env.PORT || 8080;
 
-
+const Uri = 'mongodb://localhost/campito-spa';
+mongoose.connect(Uri)
+.then(db => console.log('Db is connected'))
+  .catch(error => console.error(error));
 // Configuration
 // ================================================================================================
 
 // Set up Mongoose
-mongoose.connect(isDev ? config.db_dev : config.db);
+
 mongoose.Promise = global.Promise;
 
 const app = express();
