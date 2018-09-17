@@ -22,6 +22,16 @@ npm install
 
 Make sure to add a `config.js` file in the `config` folder. See the example there for more details.
 
+##Warning cases
+in case there is a problem with bcrypt, then do the following:
+npm install -g node-gyp
+npm install --g --production windows-build-tools
+
+and then isntall
+npm install bcrypt
+
+or change it to bcryptjs
+
 Production mode:
 
 ```shell
@@ -33,3 +43,5 @@ Development (Webpack dev server) mode:
 ```shell
 npm run start:dev
 ```
+##Page
+https://limitless-waters-44501.herokuapp.com/

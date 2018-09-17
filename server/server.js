@@ -11,9 +11,10 @@ const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const port  = process.env.PORT || 8080;
+const port  = process.env.PORT || 5000;
 
-const Uri = 'mongodb://localhost/campito-spa';
+
+const Uri = 'mongodb://creador:creador1@ds261072.mlab.com:61072/mongo';
 mongoose.connect(Uri)
 .then(db => console.log('Db is connected'))
   .catch(error => console.error(error));
@@ -25,6 +26,21 @@ mongoose.connect(Uri)
 mongoose.Promise = global.Promise;
 
 const app = express();
+
+app.get('/api/passwords', (req, res) => {
+  const count = 5;
+
+  // Generate some passwords
+  const passwords = Array.from(Array(count).keys()).map(i =>
+    generatePassword(12, false)
+  )
+
+  // Return them as json
+  res.json(passwords);
+
+  console.log(`Sent ${count} passwords`);
+});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
